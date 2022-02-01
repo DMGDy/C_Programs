@@ -1,0 +1,14 @@
+Complete programming exercises 1, 3, and 8 from pages 53 and 54 of your book.
+
+Exercise 1 should be implemented as specified in your book with no modifications.
+
+Exercise 3 should be changed slightly from the specification in the book. Take fractional years and leap years into account in your program. You should specify your birthdate and calculate your age in days.
+
+    The leap year requirement is fairly self-explanatory. Make sure to account for leap years (years in which February has 29 days).
+    Fractional years means that you should take into account the portion of the current year and your birth year that passed/will pass. For example, my birthday is September 18, so I would want to count the days from then until the end of the year in by birth year and between the current date and my birthday this year. 
+    You may hard-code the birthday into your code, but you should get the current date programmatically.
+    Your code should work for any birthday specified. So, if I change your code to specify my own birthday your code should give me the right answer.
+
+Exercise 8 should be implemented as specified in the book with no modifications.
+
+Submit your three programs (named ex1.c, ex3.c, and ex8.c) to the "Assignment_2" Dropbox in Elearning.
