@@ -10,7 +10,6 @@ int main(void)	{
 	fprintf(stdout,"Enter the year you were born, the numerical value of the month you were born, and the day of the month: \n");
 	fscanf(stdin," %d %d %d", &year, &month, &day);
 	month -= 1;
-	fprintf(stdout,"%d %d %d\n", year, month, day);
 	fprintf(stdout,"Enter the current year, numerical month, and day of the month:\n");
 	fscanf(stdin,"%d %d %d", &current_year, &current_month, &current_day);
 	current_month -= 1;
@@ -33,6 +32,9 @@ int date_to_year(int year, int month, int day, int current_year, int current_mon
   		total_days += today - day;
 		}    
 	}
+	if((year % 4 == 0 || year % 100 == 0 || year % 400 == 0) && month == 1 && day == 29)	{
+  	total_days += 1;
+  }
 	
 	if(current_month != month)	{
 		year += 1;
@@ -45,18 +47,20 @@ int date_to_year(int year, int month, int day, int current_year, int current_mon
 int days_from_month(int birth_month, int birth_day, int current_month, int current_day)	{
 	int starting_month, month_day_count, month_counter, counted_days;
 	int month_days[] ={31,28,31,30,31,30,31,31,30,31,30,31};
-	month_counter = birth_month;
+  starting_month = current_month - 1;
 
-  starting_month = current_month;
   if(birth_month != current_month)	{
   	counted_days = (month_days[birth_month] - birth_day) + current_day;
-  	for(month_counter = birth_month; month_counter < 11; month_counter++)	{
+		month_counter = birth_month;
+  	while(month_counter < 11)	{
+			month_counter += 1;
   		counted_days += month_days[month_counter];
-  		fprintf(stdout,"%d \n",month_day_count);
   	}
   	if(current_month != 0){
-  		for(month_counter = 0; month_counter < current_month; month_counter++)	{
+			month_counter = 0;
+  		while(month_counter < current_month)	{
   			counted_days += month_days[month_counter];
+				month_counter += 1;
   		}
   	}
   }
@@ -66,11 +70,10 @@ int days_from_month(int birth_month, int birth_day, int current_month, int curre
 int leap_counter(int birth_year,int current_year)	{
 	int leap_counter, starting_year = 0;
 	
-	for(starting_year = birth_year; starting_year < current_year; starting_year++)	{
-  	if(starting_year % 4 == 0||starting_year % 100 == 0||starting_year % 400 ==0)	{
+	for(starting_year = birth_year ; starting_year < current_year; starting_year++)	{
+  	if(starting_year % 4 == 0||starting_year % 100 == 0||starting_year % 400 == 0)	{
   		leap_counter +=1;
   	}
-  	fprintf(stdout," %d %d\n",leap_counter,starting_year);
   }
 
 	return leap_counter;
